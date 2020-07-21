@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="container text-center">
+    <h2 class="mt-3 mb-3 text-center">Weather</h2>
+    <form class="text-center mt-3 "  action="weather" method="POST">
+        {% csrf_token %}
+    {{form.city}}
+    <input type="submit" class="btn btn-success btn-ld" value="Submit">
+    </form> 
+</div>   
+    <br><br>
+    
+    {% if count_1 %}
+         <div class="container text-center row ">
+             <div class="col-5 "> </div>
+        <div class="col-4 text-center ">    
+         <div class="box ">
+            
+            <article class="media">
+                <div class="media-center">
+                    <figure class="image is-50x50">
+                        <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <span class="title">{{ weather.city }}</span>
+                            <br>
+                            <span class="subtitle">{{ weather.temp }}° C</span>
+                            <br> {{ weather.desc }}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-3 "> </div>
+        </div>
+        </div>
+     {% endif %}   
+    
+{% endblock %}

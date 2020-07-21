@@ -20,5 +20,6 @@ urlpatterns = [
     path('',include('UnicodeTask.urls')),
     path('gitApi',include('gitApi.urls')),
     path('admin/', admin.site.urls),
+    path('weather',include('weatherApp.urls')),
 
 ]
