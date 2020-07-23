@@ -20,4 +20,4 @@ def task1(request):
 
 def home(request):
     
-    return HttpResponse("<h1> Welcome </h1>")
+    return render(request,'home.html')

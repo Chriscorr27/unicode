@@ -1,42 +1,63 @@
 {% extends 'base.html' %}
 {%block content%}
-<div class="container text-center">
+<div class="container text-center row ">
+    <div class="col-4 ">
+        {% if search %}
+            <a href="weather"><-- back to weather </a>
+        {% else %}
+        <a href="{% url 'home' %}"><-- back to home </a>
+        {% endif %}
+     </div>
+<div class="col-4 text-center">
     <h2 class="mt-3 mb-3 text-center">Weather</h2>
-    <form class="text-center mt-3 "  action="weather" method="POST">
+    <form class="text-center mt-3 form-inline "  action="weather" method="POST">
         {% csrf_token %}
     {{form.city}}
     <input type="submit" class="btn btn-success btn-ld" value="Submit">
+    <br>
+    {%if err_msg%}
+    <div class="notification is-danger mt-2">{{err_msg}}</div>
+    {% endif %}
+    
     </form> 
-</div>   
+</div>
+<div class="col-4 "> </div>
+</div> 
     <br><br>
     
-    {% if count_1 %}
+    {% for weather in weathers %}
          <div class="container text-center row ">
-             <div class="col-5 "> </div>
+             <div class="col-4 "> </div>
         <div class="col-4 text-center ">    
-         <div class="box ">
+         <!--  -->
             
-            <article class="media">
-                <div class="media-center">
+            <article class="media border border-success">
+                <div class="media-left">
                     <figure class="image is-50x50">
                         <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
                     </figure>
                 </div>
                 <div class="media-content">
-                    <div class="content">
+                    <div class="content ">
                         <p>
-                            <span class="title">{{ weather.city }}</span>
+                            <span class="title">{{ weather.city }} </span>
                             <br>
                             <span class="subtitle">{{ weather.temp }}° C</span>
-                            <br> {{ weather.desc }}
+                            <br> {{ weather.desc }} 
+                            <br> <a href="#">count : {{ weather.count }}</a>
                         </p>
                     </div>
                 </div>
+                
             </article>
         </div>
-        <div class="col-3 "> </div>
+        
+        <div class="col-4 "> </div>
+        
         </div>
-        </div>
-     {% endif %}   
+        <br>
+        
+       
+     {% endfor %}   
     
 {% endblock %}

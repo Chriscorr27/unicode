@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{%block content%}
+    <a href="{% url 'inputUser' %}"><-- back to home </a><h1 class="text-center">USER DATA</h1><br><br>
+<div class="container text-center  ">
     
     <h2>Login : {{Login}}</h2>
     <h2>ID : {{ID}}</h2>
@@ -15,7 +11,10 @@
     <h2>Email : {{Email}}</h2>
     <h2>Public_repos : {{Public_repos}}</h2>
     
+</div>
+    
+    
 
     
-</body>
-</html>
+{% endblock %}
+
