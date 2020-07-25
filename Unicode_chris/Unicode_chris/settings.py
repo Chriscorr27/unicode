@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'UnicodeTask',
     'gitApi',
     'weatherApp',
+    'movieApp',
 ]   
 
 MIDDLEWARE = [
