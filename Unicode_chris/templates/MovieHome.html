@@ -27,27 +27,46 @@
 </div> 
 <br>
 <br>
-{% if search %}
-    <div class="  text-center row">
-        {% for movie in movies %}
-            <div class="col-xs-12 col-md-6">
-                <a href="{% url 'MovieDetail' movie.imdbID  %}" class="btn-full subpage text-secondary "> <div class="media">
-                <div class="media-left">
-                <img src="{{movie.Poster}}" width="75" height="109"> </div>
-                <div class="media-body media-vertical-align">
-                <span class="h3">
-                    {{movie.Title}}
-                </span>
-                <div class="unbold">
-                ({{movie.Year}}) ({{movie.Type}})
+    {% if search %}
+        <div class="  text-center row">
+            {% for movie in movies %}
+                <div class="col-xs-12 col-md-6">
+                    <a href="{% url 'MovieDetail' movie.imdbID  %}" class="btn-full subpage text-secondary "> <div class="media">
+                    <div class="media-left">
+                    <img src="{{movie.Poster}}" width="75" height="109"> </div>
+                    <div class="media-body media-vertical-align">
+                    <span class="h3">
+                        {{movie.Title}}
+                    </span>
+                    <div class="unbold">
+                    ({{movie.Year}}) ({{movie.Type}})
+                    </div>
+                    <div class="h4 unbold">
+                    </div>
+                    </div>
+                    </div>
+                    </a>    <hr>
                 </div>
-                <div class="h4 unbold">
+            {% endfor %}    
+        </div>
+        
+
+    {% else %}    
+            {%for movie in movies%}
+
+            <div class="container text-center row ">
+                <div class="col-4 "> </div>
+                
+                <div class="col-4 text-center border border-success m-2 p-2 "> 
+                    <a href="{% url 'searchedMovie' movie.search %}" class="btn-full subpage text-secondary ">
+                    <h3>Search : {{movie.search}}</h3>
+                    <h5>count : {{movie.count}}</h5>
+                    </a>
                 </div>
-                </div>
-                </div>
-                </a>    <hr>
+                
+                <div class="col-4 "> </div>
             </div>
-        {% endfor %}    
-    </div>
-{% endif %}
+
+            {% endfor %}
+    {% endif %}
 {% endblock %}

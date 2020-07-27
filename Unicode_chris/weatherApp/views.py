@@ -17,7 +17,7 @@ def search(request):
             #isCityInDataBase = City_weather.objects.filter(city=city).exists()
             city_obj =City_weather.objects.get_or_create(name=city)
             city_obj[0].count+=1
-            print(city_obj[0].count)
+           # print(city_obj[0].count)
             city_obj[0].save()
             
             weather_info={
@@ -33,7 +33,7 @@ def search(request):
             return render(request,'WeatherHome.html',content)
         else:
             err_msg=city+' doesnot exist'
-            print(err_msg)
+            #print(err_msg)
         
             
    
